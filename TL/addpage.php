@@ -18,6 +18,8 @@ else{
 $data = $pdo->query("INSERT INTO `books` (`id`, `title`, `price`) VALUES (NULL, '$name', '$price')");
 $data = $pdo->query("INSERT INTO `authors` (`id`, `name`) VALUES (NULL, '$name_a')");
 
+$data = $pdo->query("INSERT INTO `books_authors` (`id` ,`id_author`,`id_books`) VALUE (NULL,(SELECT `name` FROM `authors`),(SELECT `title`,`price` FROM `books`)");
+
 //
 //echo <<<HTML
 //<!DOCTYPE html>
