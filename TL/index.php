@@ -21,11 +21,13 @@ echo <<<HTML
         <button type="submit" class="but">Добавить книгу</button>
     </form>
     <form action="delete_book.php">
-    <button type="submit" class="but" id="del">Удалить книгу</button>
+    <button type="submit" data-tooltip="Удаление книги" class="but" id="del"><i class="fa fa-trash" aria-hidden="true"></i></button>
     </form>
 </div>
 </div>
 
+    <!-- Подключение шрифтов -->
+<script src="https://use.fontawesome.com/74811d09e3.js"></script>
 HTML;
 
 $sql = $pdo->query('SELECT books.*, authors.* FROM books,authors,books_authors WHERE books_authors.id_books = books.id AND books_authors.id_author = authors.id');
