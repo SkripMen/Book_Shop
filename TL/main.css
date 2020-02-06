@@ -1,0 +1,81 @@
+body{
+    margin: 10px 15px;
+    /*background: rgba(0, 0, 0, 0.57);*/
+    background: url("https://image.freepik.com/free-photo/_1258-234.jpg") no-repeat;
+    background-size: 100%;
+    text-align: center;
+}
+form{
+    margin: 5px auto;
+    max-width: 60%;
+}
+input {
+    width: 300px;
+    font-size: 13px;
+    padding: 6px 0 4px 10px;
+    border: 1px solid #cecece;
+    background: #F6F6f6;
+    border-radius: 8px;
+}
+.but {
+    cursor: pointer;
+    border: 1px solid #cecece;
+    background: #f6f6f6;
+    box-shadow: inset 0px 20px 20px #ffffff;
+    border-radius: 8px;
+    padding: 5px 14px;
+    width: 150px;
+}
+.but:hover {
+    box-shadow: inset 0px -20px 20px #ffffff;
+}
+.but:active {
+    margin-top: 1px;
+    margin-bottom: -1px;
+    zoom: 1;
+}
+.book {
+    text-align: center;
+    margin: 0 auto;
+    cursor: pointer;
+    border: 1px solid #cecece;
+    background: #f6f6f6;
+    box-shadow: inset 0px 20px 20px #ffffff;
+    border-radius: 8px;
+    padding: 8px 14px;
+    width: 350px;
+}
+.book:hover {
+    box-shadow: inset 0px -20px 20px #ffffff;
+}
+.book:active {
+    margin-top: 1px;
+    margin-bottom: -1px;
+    zoom: 1;
+}
+#del{
+    margin: 0 auto;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    border: 1px solid #cecece;
+    background: #f6f6f6;
+    box-shadow: inset 0px 20px 20px #ffffff;
+    border-radius: 8px;
+    padding: 5px 14px;
+    width: 120px;
+    display: flex;
+}
+#del:hover {
+    box-shadow: inset 0px -20px 20px #ffffff;
+}
+#del:active {
+    margin-top: 1px;
+    margin-bottom: -1px;
+    zoom: 1;
+}
+select {
+    background: white;
+    border: 0;
+    padding: 2px;
+}

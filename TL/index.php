@@ -2,27 +2,28 @@
 //подключение бд
 include ('connectBD.php');
 
+//Вывод формы для добавления книги
 echo <<<HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Directory</title>
+    <title>Главная</title>
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-
     <div class="container1">
-   <!--форма передачи данных в бд-->
     <form method="POST" action="addpage.php">
         <input name="name" placeholder="Название книги">
         <input name="price" placeholder="Цена">
         <input name="name_a" placeholder="Имя автора">
-        <br><br>
 
         <button type="submit" class="but">Добавить книгу</button>
-
     </form>
+    <form action="delete_book.php">
+    <button type="submit" class="but" id="del">Удалить книгу</button>
+    </form>
+</div>
 </div>
 
 HTML;
@@ -31,9 +32,9 @@ $sql = $pdo->query('SELECT books.*, authors.* FROM books,authors,books_authors W
 $sql = $sql->fetchAll();
 //var_dump($sql);
 foreach ($sql as $row){
-    echo $row['title'].' ';
+    echo '<div class="book">'.$row['title'].' ';
     echo $row['price'].' ';
-    echo $row['name'].'<br>';
+    echo $row['name'].'<br></div>';
 }
 
 //вызов функции вывода всех записей
