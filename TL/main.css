@@ -1,18 +1,29 @@
 body {
-    margin: 10px 15px;
-    /*background: rgba(0, 0, 0, 0.57);*/
-    background: url("https://image.freepik.com/free-photo/_1258-234.jpg") no-repeat;
-    background-size: 100%;
+    margin: 0;
     text-align: center;
+    background: black;
 }
-
+.cop{
+    color:white;
+}
+.section{
+    height: 987px;
+    width: 100%;
+    display: table;
+    /*background: url("video/ocean.jpg") no-repeat center;*/
+    background-size: cover;
+}
+.container1{
+    display: table-cell;
+    min-height: 100%;
+}
 form {
     margin: 5px auto;
     max-width: 60%;
 }
 
 input {
-    width: 300px;
+    width: 150px;
     font-size: 13px;
     padding: 6px 0 4px 10px;
     border: 1px solid #cecece;
@@ -22,7 +33,7 @@ input {
 
 .but {
     cursor: pointer;
-    border: 1px solid #cecece;
+    border: 5px solid black;
     background: #f6f6f6;
     box-shadow: inset 0px 20px 20px #ffffff;
     border-radius: 8px;
@@ -89,6 +100,32 @@ input {
     zoom: 1;
 }
 
+#pls {
+    margin: 0 auto;
+    text-decoration: none;
+    color: black;
+    font-size: 24px;
+    cursor: pointer;
+    border: 1px solid #cecece;
+    background: #f6f6f6;
+    box-shadow: inset 0px 20px 20px #ffffff;
+    border-radius: 50%;
+    padding: 15px;
+    max-width: 50px;
+    display: flex;
+    transition: 1s;
+}
+
+#pls:hover {
+    box-shadow: inset 0px -20px 20px #ffffff;
+    color: green;
+}
+
+#pls:active {
+    margin-top: 1px;
+    margin-bottom: -1px;
+    zoom: 1;
+}
 select {
     background: white;
     border: 0;
@@ -102,7 +139,7 @@ select {
 [data-tooltip]::after {
     content: attr(data-tooltip);
     position: absolute;
-    width: 200px;
+    width: 250px;
     left: 0;
     top: 0;
     background: #ffffff;
