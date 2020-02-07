@@ -1,16 +1,39 @@
 <?php
 //подключение к бд
 include ('connectBD.php');
+function error($str, $id = true)
+{
 
-//получение данных методом POST из формы
-if (isset($_POST)) {
-    $name = $_POST['name'];
-    $price = $_POST['price'];
-    $name_a = $_POST['name_a'];
+    echo '<title>Ошибка ввода</title>';
+    if ($id) {
+        echo "<p>Пожалуйста, укажите $str.</p>";
+    } else {
+        echo "<p>$str.</p>";
+    }
+    echo "<p><a href='../index.php'>Заполнить заново</a></p>";
+    exit();
 }
-else{
-    //вывод предупреждения если страница не добавилась
-    echo "Страница не добавилась!";
+if (!empty(trim($_POST['name']))) {
+    $name = trim(addslashes($_POST['name']));
+} else {
+    error('название книги');
+}
+
+if(is_numeric(trim($_POST['price'])))
+{
+    if (!empty(trim($_POST['price']))) {
+        $price = trim(addslashes($_POST['price']));
+    } else {
+        error('цену книги');
+    }
+} else {
+    error('Неверный формат поля: "цена"', false);
+}
+
+if (!empty(trim($_POST['name_a']))) {
+    $name_a = trim(addslashes($_POST['name_a']));
+} else {
+    error('Укажите автора', false);
 }
 //добавление названия и цены книги в БД
 $sql = "INSERT INTO books (title,price) VALUES ('$name','$price')";

@@ -27,7 +27,7 @@ $sql = $sql->fetchAll();
 foreach ($sql as $row){
     echo '<div class="book">';
     echo '<h3>' .$row['title'] . '</h3>';
-    echo '<p>' .'Цена: '. $row['price'] . '</p>';
+    echo '<p>' .'Цена: '. $row['price'] . ' руб.</p>';
     echo '<p>' .'Автор: '. $row['name'] . '</p></div>';
 }
 //подключение js скриптов
