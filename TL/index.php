@@ -2,7 +2,7 @@
 //подключение бд
 include ('connectBD.php');
 
-//Вывод формы для добавления книги
+//Вывод формы для добавления и удаления книги
 echo '
 <head>
     <title>Главная</title>
@@ -11,7 +11,7 @@ echo '
 <body>
 <div class="section" data-vide-bg="video/ocean">
     <div class="container1">
-    <form action="addpage.php">
+    <form method="post" action="addpage.php">
         <input name="name" placeholder="Название книги">
         <input name="price" placeholder="Цена">
         <input name="name_a" placeholder="Имя автора">
@@ -21,20 +21,25 @@ echo '
     <button type="submit" data-tooltip="Удаление книги" class="but" id="del"><i class="fa fa-trash" aria-hidden="true"></i></button>
     </form>
 ';
-
+//вывод уже записанный кник на страницу
 $sql = $pdo->query('SELECT books.*, authors.* FROM books,authors,books_authors WHERE books_authors.id_books = books.id AND books_authors.id_author = authors.id');
 $sql = $sql->fetchAll();
 foreach ($sql as $row){
-    echo '<div class="book">'.$row['title'].' ';
-    echo $row['price'].' ';
-    echo $row['name'].'<br></div>';
+    echo '<div class="book">';
+    echo '<h3>' .$row['title'] . '</h3>';
+    echo '<p>' .'Цена: '. $row['price'] . '</p>';
+    echo '<p>' .'Автор: '. $row['name'] . '</p></div>';
 }
+//подключение js скриптов
 echo '
 </div>
 </div>
     <!-- Подключение шрифтов -->
 <script src="https://use.fontawesome.com/74811d09e3.js"></script>
+    <!--подключение jquery-->
 <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <!--подключение vide.js-->
 <script src="js/jquery.vide.min.js"></script>
+<!--Место для рекламы-->
 <div class="cop">Создано при поддержки АКВТ©</div>
 ';
