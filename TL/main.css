@@ -2,6 +2,7 @@ body {
     margin: 0;
     text-align: center;
     background: black;
+    /*color: red;*/
 }
 .cop{
     color:white;
@@ -103,7 +104,7 @@ input {
     border-radius: 50%;
     padding: 15px;
     max-width: 50px;
-    display: flex;
+    /*display: flex;*/
     transition: 1s;
 }
 
@@ -141,6 +142,7 @@ select {
     opacity: 0;
     transition: 1s;
     border-radius: 15px;
+    z-index: 5;
 }
 
 [data-tooltip]:hover::after {

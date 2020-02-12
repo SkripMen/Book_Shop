@@ -17,9 +17,10 @@ echo '
         <input name="name_a" placeholder="Имя автора">
         <button type="submit" data-tooltip="Добавление книги" class="but" id="pls"><i class="fa fa-plus-square-o" aria-hidden="true"></i></button>
     </form>
-    <form action="delete_book.php">
-    <button type="submit" data-tooltip="Удаление книги" class="but" id="del"><i class="fa fa-trash" aria-hidden="true"></i></button>
-    </form>
+    <p>
+    <a class="but" id="pls" data-tooltip="Удаление книги" href="delete_book.php"><i class="fa fa-trash" aria-hidden="true"></i></a>
+    <a class="but" id="pls" data-tooltip="Редактирование книги" href="edit_book.php"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+    </p>
 ';
 //вывод уже записанный кник на страницу
 $sql = $pdo->query('SELECT books.*, authors.* FROM books,authors,books_authors WHERE books_authors.id_books = books.id AND books_authors.id_author = authors.id');
