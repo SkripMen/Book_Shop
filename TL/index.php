@@ -21,7 +21,7 @@ echo '
     <button type="submit" data-tooltip="Удаление книги" class="but" id="del"><i class="fa fa-trash" aria-hidden="true"></i></button>
     </form>
 ';
-//вывод уже записанных книг на страницу
+//вывод уже записанный кник на страницу
 $sql = $pdo->query('SELECT books.*, authors.* FROM books,authors,books_authors WHERE books_authors.id_books = books.id AND books_authors.id_author = authors.id');
 $sql = $sql->fetchAll();
 foreach ($sql as $row){
