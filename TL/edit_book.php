@@ -1,6 +1,7 @@
 <?php
 //подключение БД
 require('connectBD.php');
+//форма выбора книги для редактирования
 if (empty($_POST)) {
     echo '<link rel="stylesheet" href="main.css">';
     echo '<div class="section" data-vide-bg="video/ocean">';
@@ -16,12 +17,14 @@ if (empty($_POST)) {
         echo '<option value="'.$result[$i]['idA'].'|'.$result[$i]['idB'].'">'.$result[$i]['title'].' '.$result[$i]['name'].'</option>';
     }
     echo '</select></p>';
-    echo '<p><input id="butt" type="submit" value="Редактировать"></p>';
-    echo '<p class="home"><a class="but" id="pls" data-tooltip="На главную" href="index.php"><i class="fa fa-home" aria-hidden="true">на главную</i>
+    echo '<p><input class="but" type="submit" value="Редактировать"></p>';
+    echo '<p class="home"><a class="but" id="pls" data-tooltip="На главную" href="index.php"><i class="fa fa-home" aria-hidden="true"></i>
 </a></p>';
     echo '</form></div>';
     echo '
 </div>
+    <!-- Подключение шрифтов -->
+<script src="https://use.fontawesome.com/74811d09e3.js"></script>
     <!--подключение jquery-->
 <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
     <!--подключение vide.js-->
@@ -37,18 +40,20 @@ if (empty($_POST)) {
     $sql = $result->fetchAll();
     echo '<link rel="stylesheet" href="main.css">';
     echo '<div class="section" data-vide-bg="video/ocean">';
-    echo '<div><form action="process_edit.php" method="post" accept-charset="UTF-8">
+    echo '<div><form action="process/process_edit.php" method="post" accept-charset="UTF-8">
 <p><input placeholder="Имя автора" name="name" type="text" value="'.$sql[0]['name'].'"></p>
 <p><input placeholder="Название книги" name="title" type="text" value="'.$sql[0]['title'].'"></p>
 <p><input placeholder="Цена" name="price" type="text" value="'.$sql[0]['price'].'"></p>
-<p><input id="butt" type="submit" value="Изменить"></p>
-</form></div><p id="but"><a href="index.php">На главную</a></p> </div>
+<p><input placeholder="id" name="id" type="text" value="'.$_POST['book'].'|'.count($sql).' "style="display: none;"></p>
+<p><input class="but" type="submit" value="Изменить"></p>
+</form></div><p class="home"><a class="but" id="pls" data-tooltip="На главную" href="index.php"><i class="fa fa-home" aria-hidden="true"></i>
+</a></p> </div>
     <!-- Подключение шрифтов -->
 <script src="https://use.fontawesome.com/74811d09e3.js"></script>
     <!--подключение jquery-->
 <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
     <!--подключение vide.js-->
 <script src="js/jquery.vide.min.js"></script>';
-//Место для рекламы
+//футер
     echo '<div class="cop">Создано при поддержки АКВТ©</div>';
 }

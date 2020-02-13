@@ -34,7 +34,9 @@ input {
 
 .but {
     cursor: pointer;
-    border: 5px solid black;
+    color: black;
+    text-decoration: none;
+    /*border: 5px solid black;*/
     background: #f6f6f6;
     box-shadow: inset 0px 20px 20px #ffffff;
     border-radius: 8px;
@@ -148,4 +150,12 @@ select {
 [data-tooltip]:hover::after {
     opacity: 1;
     left: 50px;
+}
+.fon{
+    color: white;
+    margin: 0 auto;
+    width: 300px;
+    background: black;
+    border-radius: 25px;
+    padding-bottom: 1px;
 }

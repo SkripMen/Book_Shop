@@ -2,7 +2,7 @@
 //подключение бд
 include ('connectBD.php');
 
-//Вывод формы для добавления и удаления книги
+//Вывод формы для добавления, удаления и редактирования книги
 echo '
 <head>
     <title>Главная</title>
@@ -11,7 +11,7 @@ echo '
 <body>
 <div class="section" data-vide-bg="video/ocean">
     <div class="container1">
-    <form method="post" action="addpage.php">
+    <form method="post" action="process/addpage.php">
         <input name="name" placeholder="Название книги">
         <input name="price" placeholder="Цена">
         <input name="name_a" placeholder="Имя автора">
@@ -22,7 +22,7 @@ echo '
     <a class="but" id="pls" data-tooltip="Редактирование книги" href="edit_book.php"><i class="fa fa-pencil" aria-hidden="true"></i></a>
     </p>
 ';
-//вывод уже записанный кник на страницу
+//вывод уже записанных книг на страницу
 $sql = $pdo->query('SELECT books.*, authors.* FROM books,authors,books_authors WHERE books_authors.id_books = books.id AND books_authors.id_author = authors.id');
 $sql = $sql->fetchAll();
 foreach ($sql as $row){
@@ -41,6 +41,6 @@ echo '
 <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
     <!--подключение vide.js-->
 <script src="js/jquery.vide.min.js"></script>
-<!--Место для рекламы-->
+<!--футер-->
 <div class="cop">Создано при поддержки АКВТ©</div>
 ';

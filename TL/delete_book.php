@@ -14,7 +14,7 @@ if (empty($_POST)) {
         echo '<option value="'.$result[$i]['idA'].'|'.$result[$i]['idB'].'">'.$result[$i]['title'].' '.$result[$i]['name'].'</option>';
     }
     echo '</select></p>';
-    echo '<p><input id="butt" type="submit" value="Удалить"></p>';
+    echo '<p><input class="but" type="submit" value="Удалить"></p>';
     echo '</form></div></div>
     <!--подключение jquery-->
 <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
