@@ -1,12 +1,12 @@
 <?php
 //подключение к бд
-include ('connectBD.php');
+include ('../connectBD.php');
 //Функция вывода ошибки ввода
 function error($str, $id = true)
 {
     echo '<title>Ошибка ввода</title>
-<link rel="stylesheet" href="main.css">
-<div class="section" data-vide-bg="video/ocean">
+<link rel="stylesheet" href="../main.css">
+<div class="section" data-vide-bg="../video/ocean">
 <div class="fon">';
     if ($id) {
         echo "<p>Пожалуйста, укажите $str.</p>";
@@ -20,7 +20,7 @@ function error($str, $id = true)
         <!--подключение jquery-->
 <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
     <!--подключение vide.js-->
-<script src="js/jquery.vide.min.js"></script>
+<script src="../js/jquery.vide.min.js"></script>
     ';
     exit();
 }
