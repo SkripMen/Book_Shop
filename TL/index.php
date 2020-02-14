@@ -4,11 +4,8 @@ include ('connectBD.php');
 
 //Вывод формы для добавления, удаления и редактирования книги
 echo '
-<head>
     <title>Главная</title>
     <link rel="stylesheet" href="main.css">
-</head>
-<body>
 <div class="section" data-vide-bg="video/ocean">
     <div class="container1">
     <form method="post" action="process/addpage.php">
@@ -23,7 +20,7 @@ echo '
     </p>
 ';
 //вывод уже записанных книг на страницу
-$sql = $pdo->query('SELECT books.*, authors.* FROM books,authors,books_authors WHERE books_authors.id_books = books.id AND books_authors.id_author = authors.id');
+$sql = $pdo->query('select GROUP_CONCAT(distinct `authors`.`name`) as name , `books`.`price` as price ,GROUP_CONCAT(distinct `books`.`title`) as title from `authors`,`books`,`books_authors` where `books_authors`.`id_books` = `books`.`id` and `books_authors`.`id_author` = `authors`.`id` GROUP by `books`.`title`');
 $sql = $sql->fetchAll();
 foreach ($sql as $row){
     echo '<div class="book">';
