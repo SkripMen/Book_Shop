@@ -2,14 +2,24 @@
 //Функция вывода ошибки ввода
 function fail($str, $id = true)
 {
-    //Подключение фона(background)
-    echo '<title>Ошибка ввода</title>';
+    echo '<title>Ошибка ввода</title>
+<link rel="stylesheet" href="main.css">
+<div class="section" data-vide-bg="../video/ocean">
+<div class="fon">';
     if ($id) {
         echo "<p>Пожалуйста, укажите $str.</p>";
     } else {
         echo "<p>$str.</p>";
     }
-    echo "<p><a href='edit_book.php'>Заполнить заново</a></p>";
+    echo "<p><a class='but' href='edit_book.php'>Заполнить заново</a></p>";
+    echo '
+</div>
+</div>
+        <!--подключение jquery-->
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <!--подключение vide.js-->
+<script src="js/jquery.vide.min.js"></script>
+    ';
     exit();
 }
 
@@ -17,8 +27,8 @@ function fail($str, $id = true)
 if (isset($_POST)) {
 
     //Проверки
-    if (!empty(trim($_POST['name']))) {
-        $name = trim(addslashes($_POST['name']));
+    if (!empty(trim($_POST['title']))) {
+        $title = trim(addslashes($_POST['title']));
     } else {
         fail('название книги');
     }
@@ -32,32 +42,35 @@ if (isset($_POST)) {
     } else {
         fail('Неверный формат поля: "цена"', false);
     }
-    $IDarr = explode('|',$_POST['idB']);
-    $idB = $IDarr[0];
-    $count = $IDarr[1];
-    $name_a = array();
-    for ($i = 0;$i<$count;++$i){
-        if (!empty(trim($_POST['name_a'.$i.'']))) {
-            $name_a[$i] = trim(addslashes($_POST['name_a'.$i.'']));
+    $IDarr = explode('|',$_POST['id']);
+    $idA = $IDarr[0];
+    $idB = $IDarr[1];
+    $count = $IDarr[2];
+
+        if (!empty(trim($_POST['name']))) {
+            $name = trim(addslashes($_POST['name']));
         } else {
-            fail('Укажите автора', false);
+            fail('Имя автора', false);
         }
-    }
     //Подключение БД
     require('connectBD.php');
+    $IDarr = explode('|',$_POST['id']);
+    $idA = $IDarr[0];
+    $idB = $IDarr[1];
     //Запись в переменную SQL запроса
-    $sql = "UPDATE books SET title = '$name', price = '$price' WHERE id = '$idB'";
+    $sql = "UPDATE `books` SET `title` = '{$title}', `price` = '{$price}' WHERE id = '{$idB}'";
     //Отправка запроса БД
-    $dbc->query($sql);
+    $pdo->query($sql);
     //Отправка запроса БД и запись результата в переменную
-    $sql = $dbc->query("SELECT id_author as idA FROM books_authors WHERE id_books = '$idB'");
+    $sql = $pdo->query("SELECT `id_author` as `idA` FROM `books_authors` WHERE `id_books` = '{$idB}'");
     //Преобразование результата запроса в массив
     $sql = $sql->fetchAll();
     //Запись в одномерный массив последней строки двумерного
     for($i = 0;$i<count($sql);++$i){
         $idA = $sql[$i]['idA'];
-        $dbc->query("UPDATE authors SET name = '$name_a[$i]' WHERE id = '$idA'");
+        $pdo->query("UPDATE `authors` SET `name` = '{$name}' WHERE `id` = '{$idA}'");
     }
 }
 //Перессылка на главную
-header('Location: index.php');
+echo'<script src="js/exit.js"></script>';
+//header('Location: index.php');

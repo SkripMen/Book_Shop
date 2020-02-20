@@ -40,7 +40,7 @@ if (empty($_POST)) {
     $sql = $result->fetchAll();
     echo '<link rel="stylesheet" href="main.css">';
     echo '<div class="section" data-vide-bg="video/ocean">';
-    echo '<div><form action="process/process_edit.php" method="post" accept-charset="UTF-8">
+    echo '<div><form action="process_edit.php" method="post" accept-charset="UTF-8">
 <p><input placeholder="Имя автора" name="name" type="text" value="'.$sql[0]['name'].'"></p>
 <p><input placeholder="Название книги" name="title" type="text" value="'.$sql[0]['title'].'"></p>
 <p><input placeholder="Цена" name="price" type="text" value="'.$sql[0]['price'].'"></p>

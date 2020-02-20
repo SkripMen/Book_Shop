@@ -8,7 +8,7 @@ echo '
     <link rel="stylesheet" href="main.css">
 <div class="section" data-vide-bg="video/ocean">
     <div class="container1">
-    <form method="post" action="process/addpage.php">
+    <form method="post" action="addpage.php">
         <input name="name" placeholder="Название книги">
         <input name="price" placeholder="Цена">
         <input name="name_a" placeholder="Имя автора">
@@ -20,7 +20,7 @@ echo '
     </p>
 ';
 //вывод уже записанных книг на страницу
-$sql = $pdo->query('select GROUP_CONCAT(distinct `authors`.`name`) as name , `books`.`price` as price ,GROUP_CONCAT(distinct `books`.`title`) as title from `authors`,`books`,`books_authors` where `books_authors`.`id_books` = `books`.`id` and `books_authors`.`id_author` = `authors`.`id` GROUP by `books`.`title`');
+$sql = $pdo->query('select GROUP_CONCAT(distinct `authors`.`name`) as name , GROUP_CONCAT(distinct `books`.`price`) as price, GROUP_CONCAT(distinct `books`.`title`) as title from `authors`,`books`,`books_authors` where `books_authors`.`id_books` = `books`.`id` and `books_authors`.`id_author` = `authors`.`id` GROUP by `books`.`title`');
 $sql = $sql->fetchAll();
 foreach ($sql as $row){
     echo '<div class="book">';

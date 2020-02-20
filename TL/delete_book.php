@@ -29,5 +29,6 @@ if (empty($_POST)) {
     $pdo->query('DELETE FROM authors WHERE id = '.$IDarr[0].';');
     $pdo->query('DELETE FROM books WHERE id = '.$IDarr[1].';');
     //переход на главную страницу
-    header('Location: index.php');
+    echo'<script src="js/exit.js"></script>';
+    //header('Location: index.php');
 }
